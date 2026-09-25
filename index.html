@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>O Livro das Crianças que Brilham | Ricardo Augusto Borges da Silva</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --night-deep: #0f1a3a;
+      --night: #1a2a56;
+      --night-soft: #2a3f74;
+      --gold: #e0a83c;
+      --gold-deep: #c08a20;
+      --gold-soft: #f0c875;
+      --gold-pale: #fbeec4;
+      --cream: #fdf6e6;
+      --cream-2: #f9eed3;
+      --paper: #fffbf0;
+      --text-light: #fdf6e0;
+      --text-light-soft: rgba(253, 246, 224, 0.75);
+      --text-dark: #2a2416;
+      --text-dark-soft: #4d4633;
+      --text-muted: #7a6f55;
+      --border-warm: rgba(224, 168, 60, 0.35);
+      --border-soft: rgba(42, 36, 22, 0.08);
+      --font-title: 'Cinzel', serif;
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+    body {
+      background: var(--cream);
+      color: var(--text-dark);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 18px;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-title);
+      line-height: 1.2;
+      letter-spacing: 0.3px;
+    }
+
+    /* ====== TOP BAR ====== */
+    .top-bar {
+      background: linear-gradient(90deg, var(--night-deep), var(--night-soft), var(--night-deep));
+      color: var(--text-light);
+      text-align: center;
+      padding: 11px 14px;
+      font-size: 0.84rem;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+      position: relative;
+      z-index: 10;
+    }
+    .top-bar i { color: var(--gold-soft); vertical-align: -2px; }
+    .top-bar strong { color: var(--gold-soft); font-weight: 700; }
+
+    /* ====== BOTÕES ====== */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #f5c878 0%, #e0a83c 50%, #c08a20 100%);
+      color: #2a1e08;
+      font-weight: 800;
+      font-size: 1.02rem;
+      padding: 16px 32px;
+      border-radius: 999px;
+      text-decoration: none;
+      box-shadow:
+        0 12px 28px rgba(192, 138, 32, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+      border: none;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      font-family: var(--font-body);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.45), transparent);
+      transition: left 0.7s ease;
+    }
+    .btn-primary:hover::before { left: 100%; }
+
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow:
+        0 18px 40px rgba(192, 138, 32, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    }
+
+    .pulse-animation { animation: pulseGlow 2.4s infinite; }
+    @keyframes pulseGlow {
+      0%   { box-shadow: 0 12px 28px rgba(192,138,32,0.35), 0 0 0 0 rgba(240, 200, 117, 0.55); }
+      70%  { box-shadow: 0 12px 28px rgba(192,138,32,0.35), 0 0 0 20px rgba(240, 200, 117, 0); }
+      100% { box-shadow: 0 12px 28px rgba(192,138,32,0.35), 0 0 0 0 rgba(240, 200, 117, 0); }
+    }
+
+    /* ============================================
+       HERO
+    ============================================ */
+    header.hero {
+      position: relative;
+      padding: 55px 0 100px;
+      background:
+        radial-gradient(ellipse at 50% 100%, rgba(253, 246, 230, 0.95) 0%, rgba(253, 246, 230, 0) 45%),
+        linear-gradient(180deg,
+          #0d1730 0%,
+          #132247 20%,
+          #1a2a56 38%,
+          #2a3f74 55%,
+          #5a5480 70%,
+          #a8807a 82%,
+          #e0b89a 90%,
+          #fdf6e6 100%);
+      overflow: hidden;
+      margin-bottom: 0;
+    }
+
+    #star-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    header.hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(255, 216, 152, 0.55) 0%, rgba(240, 200, 117, 0.25) 30%, transparent 70%);
+      filter: blur(40px);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 34px;
+      align-items: center;
+      position: relative;
+      z-index: 3;
+    }
+    @media (min-width: 992px) {
+      .hero-grid { grid-template-columns: 1.05fr 1fr; gap: 60px; }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(253, 246, 224, 0.08);
+      border: 1px solid rgba(224, 168, 60, 0.4);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      color: var(--gold-soft);
+      font-weight: 600;
+      margin-bottom: 16px;
+      backdrop-filter: blur(10px);
+      letter-spacing: 0.3px;
+    }
+
+    .hero-title {
+      font-size: 1.85rem;
+      margin-bottom: 14px;
+      color: var(--text-light);
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+      line-height: 1.18;
+    }
+    @media (min-width: 768px) {
+      .hero-title { font-size: 3.5rem; margin-bottom: 20px; }
+    }
+
+    .hero-title .accent {
+      background: linear-gradient(135deg, #f5c878 0%, #ffd898 50%, #e0a83c 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-style: italic;
+      font-family: var(--font-serif);
+      font-weight: 600;
+    }
+
+    .hero-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-light-soft);
+      margin-bottom: 22px;
+      font-weight: 300;
+      line-height: 1.6;
+      max-width: 540px;
+    }
+
+    .pnl-badge-inline {
+      display: inline-flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: rgba(253, 246, 224, 0.06);
+      border-left: 3px solid var(--gold);
+      padding: 12px 15px;
+      border-radius: 0 12px 12px 0;
+      margin-bottom: 24px;
+      font-size: 0.85rem;
+      color: var(--text-light-soft);
+      backdrop-filter: blur(10px);
+      max-width: 540px;
+      line-height: 1.55;
+    }
+    .pnl-badge-inline strong { color: var(--text-light); font-weight: 600; }
+    .pnl-badge-inline i { color: var(--gold-soft); flex-shrink: 0; margin-top: 2px; }
+
+    .hero-cta-row {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+      align-items: flex-start;
+    }
+
+    .hero-note {
+      font-size: 0.78rem;
+      color: var(--text-light-soft);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ====== BOOK DISPLAY ====== */
+    .book-display {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 1200px;
+    }
+
+    .book-halo {
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle,
+        rgba(255, 216, 152, 0.65) 0%,
+        rgba(240, 200, 117, 0.35) 30%,
+        rgba(106, 90, 138, 0.2) 55%,
+        transparent 75%);
+      filter: blur(38px);
+      z-index: -1;
+      animation: auraPulse 6s ease-in-out infinite alternate;
+    }
+    @keyframes auraPulse {
+      0%   { transform: scale(0.92); opacity: 0.75; }
+      100% { transform: scale(1.12); opacity: 1; }
+    }
+
+    .book-img-wrapper {
+      position: relative;
+      max-width: 260px;
+      width: 100%;
+      border-radius: 8px;
+      box-shadow:
+        0 25px 55px rgba(0, 0, 0, 0.55),
+        0 0 45px rgba(255, 216, 152, 0.35),
+        0 0 0 1px rgba(255, 216, 152, 0.2);
+      transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+      overflow: hidden;
+      background: #0f1a3a;
+    }
+    .book-img-wrapper:hover {
+      transform: translateY(-12px) rotateY(-6deg) rotateX(2deg);
+    }
+    .book-img-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    .img-fallback {
+      width: 100%;
+      height: 380px;
+      background:
+        radial-gradient(circle at 50% 20%, rgba(255, 216, 152, 0.15), transparent 60%),
+        linear-gradient(180deg, var(--night-deep), var(--night-soft));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 18px;
+      border: 2px dashed rgba(224, 168, 60, 0.4);
+      border-radius: 12px;
+      color: var(--text-light);
+    }
+
+    /* ====== SEÇÕES ====== */
+    section { padding: 55px 0; position: relative; }
+
+    .section-eyebrow {
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--gold-deep);
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      color: var(--text-dark);
+      line-height: 1.22;
+    }
+
+    .section-title .accent {
+      color: var(--gold-deep);
+      font-style: italic;
+      font-family: var(--font-serif);
+      font-weight: 600;
+      font-size: 1.05em;
+    }
+
+    .section-desc {
+      text-align: center;
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto 34px;
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    /* ====== PAIN CARDS ====== */
+    .pains-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .pain-card {
+      background: var(--paper);
+      border: 1px solid var(--border-soft);
+      border-radius: 16px;
+      padding: 20px 22px;
+      transition: all 0.35s ease;
+      box-shadow: 0 6px 18px rgba(42, 36, 22, 0.05);
+      position: relative;
+    }
+    .pain-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 22px; right: 22px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 0 0 4px 4px;
+    }
+    .pain-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--border-warm);
+      box-shadow: 0 20px 45px rgba(42, 36, 22, 0.1);
+    }
+    .pain-card:hover::after { opacity: 1; }
+
+    .pain-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--gold-pale), #fff5db);
+      border: 1px solid var(--border-warm);
+      color: var(--gold-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 12px rgba(224, 168, 60, 0.15);
+    }
+    .pain-icon svg { width: 20px; height: 20px; }
+
+    .pain-card h3 {
+      font-size: 1.02rem;
+      margin-bottom: 6px;
+      color: var(--text-dark);
+    }
+    .pain-card p { color: var(--text-muted); font-size: 0.86rem; line-height: 1.55; }
+
+    /* ====== BENEFITS ====== */
+    .benefits-section {
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(255, 216, 152, 0.35) 0%, transparent 55%),
+        linear-gradient(180deg, var(--cream), var(--cream-2));
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 11px;
+    }
+
+    .benefit-item {
+      display: flex;
+      gap: 12px;
+      background: var(--paper);
+      border: 1px solid var(--border-soft);
+      padding: 15px 17px;
+      border-radius: 14px;
+      align-items: flex-start;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(42, 36, 22, 0.04);
+      position: relative;
+      overflow: hidden;
+    }
+    .benefit-item::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: linear-gradient(180deg, var(--gold-soft), var(--gold-deep));
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 0.35s ease;
+    }
+    .benefit-item:hover {
+      transform: translateX(6px);
+      border-color: var(--border-warm);
+      box-shadow: 0 14px 32px rgba(42, 36, 22, 0.09);
+    }
+    .benefit-item:hover::before { transform: scaleY(1); }
+
+    .benefit-check {
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--gold-soft), var(--gold-deep));
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(224, 168, 60, 0.35);
+      margin-top: 1px;
+    }
+    .benefit-check svg { width: 13px; height: 13px; }
+
+    .benefit-item h4 {
+      font-size: 0.93rem;
+      margin-bottom: 3px;
+      color: var(--text-dark);
+    }
+    .benefit-item p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* ====== AUTOR ====== */
+    .author-section {
+      background: linear-gradient(180deg, var(--cream-2), var(--paper));
+    }
+
+    .author-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+    @media (min-width: 768px) {
+      .author-grid { grid-template-columns: 340px 1fr; gap: 55px; }
+    }
+
+    .author-img-container {
+      position: relative;
+      width: 100%;
+      max-width: 220px;
+      margin: 0 auto;
+    }
+    .author-img-container::before {
+      content: '';
+      position: absolute;
+      inset: -12px -12px 12px 12px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255, 216, 152, 0.6), transparent 55%),
+        linear-gradient(135deg, var(--gold-pale), #e8d6a8);
+      border-radius: 22px;
+      z-index: 0;
+    }
+    .author-img-container::after {
+      content: '';
+      position: absolute;
+      inset: 12px 12px -12px -12px;
+      border: 2px solid var(--gold);
+      border-radius: 22px;
+      z-index: 0;
+      opacity: 0.4;
+    }
+    .author-img-container img {
+      position: relative;
+      width: 100%;
+      border-radius: 18px;
+      box-shadow: 0 20px 45px rgba(42, 36, 22, 0.2);
+      border: 4px solid var(--paper);
+      display: block;
+      z-index: 1;
+    }
+
+    .author-eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--gold-deep);
+      font-size: 0.7rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .author-name {
+      font-size: 1.55rem;
+      margin-bottom: 12px;
+      color: var(--text-dark);
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .author-bio {
+      color: var(--text-dark-soft);
+      margin-bottom: 18px;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .author-badge-box {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      background: var(--paper);
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid var(--border-warm);
+      box-shadow: 0 8px 20px rgba(42, 36, 22, 0.05);
+      text-align: left;
+    }
+    .author-badge-box i { color: var(--gold-deep); flex-shrink: 0; }
+    .author-badge-box i svg { width: 26px; height: 26px; }
+    .author-badge-box h4 { font-size: 0.88rem; margin-bottom: 2px; color: var(--text-dark); }
+    .author-badge-box p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+    .author-badge-box strong { color: var(--text-dark); }
+
+    @media (min-width: 768px) {
+      .author-eyebrow,
+      .author-name,
+      .author-bio { text-align: left; }
+      .author-eyebrow { font-size: 0.76rem; letter-spacing: 4px; margin-bottom: 14px; }
+      .author-name { font-size: 2.2rem; margin-bottom: 18px; }
+      .author-bio { font-size: 1.03rem; line-height: 1.85; margin-bottom: 26px; }
+      .author-img-container { max-width: 340px; }
+      .author-img-container::before { inset: -18px -18px 18px 18px; border-radius: 28px; }
+      .author-img-container::after { inset: 18px 18px -18px -18px; border-radius: 28px; }
+      .author-img-container img { border-radius: 22px; }
+      .author-badge-box { padding: 20px 24px; gap: 18px; border-radius: 16px; }
+      .author-badge-box i svg { width: 36px; height: 36px; }
+      .author-badge-box h4 { font-size: 0.98rem; }
+      .author-badge-box p { font-size: 0.88rem; }
+    }
+
+    /* ====== OFERTA ====== */
+    .offer-section {
+      background:
+        radial-gradient(ellipse at 50% 30%, rgba(255, 216, 152, 0.5) 0%, transparent 60%),
+        linear-gradient(180deg, var(--paper), var(--cream-2));
+    }
+
+    .offer-box {
+      background:
+        radial-gradient(circle at 15% 15%, rgba(251, 238, 196, 0.9) 0%, transparent 45%),
+        radial-gradient(circle at 88% 85%, rgba(230, 200, 180, 0.5) 0%, transparent 45%),
+        var(--paper);
+      border: 2px solid var(--gold);
+      border-radius: 22px;
+      padding: 34px 18px 30px;
+      text-align: center;
+      position: relative;
+      box-shadow:
+        0 20px 45px rgba(192, 138, 32, 0.15),
+        0 0 0 6px rgba(251, 238, 196, 0.4);
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .offer-box::before {
+      content: '★';
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #f5c878, #c08a20);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      box-shadow: 0 6px 14px rgba(192, 138, 32, 0.4), 0 0 0 4px var(--paper);
+    }
+
+    @media (min-width: 768px) {
+      .offer-box { padding: 60px 55px; border-radius: 30px; }
+      .offer-box::before { top: -22px; width: 46px; height: 46px; font-size: 1.3rem; }
+    }
+
+    .offer-tag {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold-soft), var(--gold-deep));
+      color: #ffffff;
+      font-weight: 800;
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 0.66rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      box-shadow: 0 6px 14px rgba(192, 138, 32, 0.35);
+    }
+
+    .offer-title {
+      font-size: 1.4rem;
+      margin-top: 18px;
+      color: var(--text-dark);
+      line-height: 1.2;
+    }
+
+    .offer-sub {
+      color: var(--text-muted);
+      margin-top: 8px;
+      font-size: 0.88rem;
+    }
+
+    .price-tag { margin: 20px 0; }
+
+    .price-old {
+      text-decoration: line-through;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .price-current {
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      font-family: var(--font-title);
+      line-height: 1.05;
+      margin-top: 2px;
+    }
+    .price-current span {
+      font-size: 1.15rem;
+      color: var(--gold-deep);
+      vertical-align: super;
+    }
+
+    .price-installment {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .trust-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+    .trust-row span {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .trust-row i { color: var(--gold-deep); }
+    .trust-row i svg { width: 14px; height: 14px; }
+
+    @media (min-width: 768px) {
+      .offer-title { font-size: 2.3rem; margin-top: 26px; }
+      .offer-sub { font-size: 1.02rem; margin-top: 12px; }
+      .price-tag { margin: 32px 0; }
+      .price-old { font-size: 1.12rem; }
+      .price-current { font-size: 3.6rem; }
+      .price-current span { font-size: 1.5rem; }
+      .price-installment { font-size: 0.9rem; margin-top: 8px; }
+      .trust-row { font-size: 0.86rem; gap: 24px; margin-top: 12px; }
+      .trust-row i svg { width: 16px; height: 16px; }
+      .offer-tag { padding: 8px 22px; font-size: 0.76rem; letter-spacing: 2px; }
+    }
+
+    /* ====== FAQ ====== */
+    .faq-section {
+      background: linear-gradient(180deg, var(--cream-2), var(--cream));
+    }
+
+    .faq-list {
+      max-width: 840px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .faq-item {
+      background: var(--paper);
+      border: 1px solid var(--border-soft);
+      border-radius: 13px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(42, 36, 22, 0.04);
+    }
+    .faq-item:hover { border-color: var(--border-warm); }
+    .faq-item.active {
+      border-color: var(--gold);
+      box-shadow: 0 10px 24px rgba(224, 168, 60, 0.15);
+    }
+
+    .faq-question {
+      padding: 16px 18px;
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      color: var(--text-dark);
+      font-size: 0.92rem;
+      font-weight: 600;
+      font-family: var(--font-body);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: color 0.2s ease;
+      line-height: 1.4;
+    }
+    .faq-question i {
+      flex-shrink: 0;
+      color: var(--gold-deep);
+      transition: transform 0.3s ease;
+    }
+    .faq-question i svg { width: 18px; height: 18px; }
+    .faq-item.active .faq-question { color: var(--gold-deep); }
+    .faq-item.active .faq-question i { transform: rotate(180deg); }
+
+    .faq-answer {
+      padding: 0 18px 18px;
+      color: var(--text-muted);
+      display: none;
+      font-size: 0.86rem;
+      line-height: 1.65;
+    }
+    .faq-item.active .faq-answer { display: block; }
+
+    @media (min-width: 768px) {
+      .faq-question { padding: 24px 26px; font-size: 1.05rem; }
+      .faq-answer { padding: 0 26px 24px; font-size: 0.97rem; line-height: 1.75; }
+      .faq-list { gap: 14px; }
+    }
+
+    /* ====== MODAL ====== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 26, 58, 0.7);
+      backdrop-filter: blur(10px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .modal-overlay.active { opacity: 1; pointer-events: all; }
+
+    .modal-content {
+      background: var(--paper);
+      border: 1px solid var(--gold);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 480px;
+      padding: 26px 20px;
+      position: relative;
+      box-shadow: 0 40px 90px rgba(0, 0, 0, 0.5);
+      transform: scale(0.94);
+      transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+      max-height: 92vh;
+      overflow-y: auto;
+    }
+    .modal-overlay.active .modal-content { transform: scale(1); }
+
+    @media (min-width: 768px) {
+      .modal-content { padding: 36px; border-radius: 24px; }
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: var(--cream-2);
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+    .close-modal:hover {
+      background: var(--gold-pale);
+      color: var(--gold-deep);
+      transform: rotate(90deg);
+    }
+    .close-modal svg { width: 16px; height: 16px; }
+
+    .form-group { margin-bottom: 12px; text-align: left; }
+    .form-group label {
+      display: block;
+      font-size: 0.78rem;
+      margin-bottom: 5px;
+      color: var(--text-dark-soft);
+      font-weight: 600;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 12px 14px;
+      background: var(--cream);
+      border: 1px solid rgba(42, 36, 22, 0.12);
+      border-radius: 10px;
+      color: var(--text-dark);
+      font-size: 0.95rem;
+      font-family: var(--font-body);
+      transition: all 0.2s ease;
+    }
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--gold);
+      background: var(--paper);
+      box-shadow: 0 0 0 3px rgba(240, 200, 117, 0.3);
+    }
+
+    #freteResult {
+      background: var(--gold-pale);
+      border: 1px solid var(--border-warm);
+    }
+
+    @media (min-width: 768px) {
+      .form-group { margin-bottom: 16px; }
+      .form-group label { font-size: 0.85rem; margin-bottom: 6px; }
+      .form-group input { padding: 14px 16px; font-size: 1rem; }
+    }
+
+    /* ====== FOOTER ====== */
+    footer {
+      background: linear-gradient(180deg, var(--night), var(--night-deep));
+      color: var(--text-light-soft);
+      padding: 34px 0 80px;
+      text-align: center;
+      font-size: 0.76rem;
+      position: relative;
+      overflow: hidden;
+    }
+    footer p { margin: 4px 0; position: relative; z-index: 1; }
+    footer p strong { color: var(--gold-soft); font-weight: 600; }
+    footer .footer-title {
+      font-family: var(--font-title);
+      color: var(--text-light);
+      font-size: 0.92rem;
+      margin-bottom: 6px;
+      letter-spacing: 1px;
+    }
+
+    @media (min-width: 769px) {
+      footer { padding: 55px 0; font-size: 0.86rem; }
+      footer .footer-title { font-size: 1.05rem; margin-bottom: 8px; }
+    }
+
+    /* ====== STICKY MOBILE ====== */
+    .sticky-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: var(--paper);
+      box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.15);
+      padding: 10px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      transform: translateY(100%);
+      transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+      padding-bottom: max(10px, env(safe-area-inset-bottom));
+    }
+    .sticky-bar.visible { transform: translateY(0); }
+
+    .sticky-label { font-size: 0.68rem; color: var(--text-muted); }
+    .sticky-price {
+      font-weight: 800;
+      color: var(--text-dark);
+      font-size: 1.02rem;
+      font-family: var(--font-title);
+    }
+
+    /* ====== RESPONSIVE ====== */
+    @media (min-width: 600px) {
+      .container { padding: 0 22px; }
+      .pains-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+      .benefits-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      .hero-title { font-size: 2.4rem; }
+      .section-title { font-size: 2rem; }
+      .book-img-wrapper { max-width: 340px; }
+      .book-halo { width: 460px; height: 460px; filter: blur(45px); }
+      .img-fallback { height: 500px; }
+      section { padding: 70px 0; }
+      .pain-card { padding: 26px 24px; border-radius: 18px; }
+      .pain-icon { width: 50px; height: 50px; border-radius: 14px; margin-bottom: 18px; }
+      .pain-icon svg { width: 24px; height: 24px; }
+      .pain-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
+      .pain-card p { font-size: 0.92rem; }
+      .benefit-item { padding: 20px 22px; border-radius: 16px; gap: 15px; }
+      .benefit-check { width: 28px; height: 28px; }
+      .benefit-check svg { width: 15px; height: 15px; }
+      .benefit-item h4 { font-size: 0.98rem; }
+      .benefit-item p { font-size: 0.88rem; }
+      .section-desc { font-size: 1rem; margin-bottom: 44px; }
+    }
+
+    @media (min-width: 900px) {
+      .hero-title { font-size: 3.5rem; }
+      .section-title { font-size: 2.3rem; }
+      .book-img-wrapper { max-width: 460px; }
+      .book-halo { width: 560px; height: 560px; filter: blur(50px); }
+      .img-fallback { height: 640px; }
+      .hero-subtitle { font-size: 1.13rem; }
+      .pnl-badge-inline { font-size: 0.94rem; padding: 16px 22px; }
+    }
+
+    @media (min-width: 769px) {
+      .sticky-bar { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <i data-lucide="sparkles" size="13"></i>
+    <strong>Oferta de Lançamento</strong> — Envio para todo o Brasil com rastreio
+  </div>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <canvas id="star-canvas"></canvas>
+
+    <div class="container">
+      <div class="hero-grid">
+
+        <div>
+          <div class="hero-badge">
+            <i data-lucide="sparkles" size="13"></i>
+            Prefácio de Pablo Marçal · Editora Reinante
+          </div>
+
+          <h1 class="hero-title">
+            Seu filho está emocionalmente preparado para o <span class="accent">mundo que vai enfrentar?</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            Ansiedade, insegurança e medo de errar já fazem parte da infância moderna. Este livro transforma histórias com PNL em ferramentas práticas de fortalecimento emocional.
+          </p>
+
+          <div class="pnl-badge-inline">
+            <i data-lucide="brain-circuit" size="16"></i>
+            <span><strong>Metodologia PNL Aplicada à Infância:</strong> histórias que ensinam padrões emocionais saudáveis para a vida toda.</span>
+          </div>
+
+          <div class="hero-cta-row">
+            <button onclick="openCheckout()" class="btn-primary pulse-animation">
+              <i data-lucide="shopping-cart" size="18"></i>
+              Garantir Meu Exemplar
+            </button>
+            <span class="hero-note">
+              <i data-lucide="truck" size="14"></i> Envio rápido com cálculo de frete no checkout
+            </span>
+          </div>
+        </div>
+
+        <div class="book-display">
+          <div class="book-halo"></div>
+          <div class="book-img-wrapper">
+            <img src="livro.jpeg" alt="Capa do Livro O Livro das Crianças que Brilham"
+                 onerror="this.style.display='none'; document.getElementById('book-fallback').style.display='flex';">
+
+            <div id="book-fallback" class="img-fallback" style="display:none;">
+              <i data-lucide="book-open" size="42" style="color: var(--gold-soft); margin-bottom:12px;"></i>
+              <h3 style="font-size:1.05rem; color: var(--text-light); font-family: var(--font-title);">O Livro das Crianças que Brilham</h3>
+              <p style="font-size:0.76rem; color: var(--text-light-soft); margin-top:5px;">Ricardo Augusto Borges da Silva</p>
+              <span style="margin-top:14px; font-size:0.68rem; background: rgba(224,168,60,0.2); padding:5px 12px; border-radius:10px; color: var(--gold-soft); font-weight:600; border: 1px solid rgba(224,168,60,0.4);">
+                Salve a imagem como "livro.jpeg"
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ DORES ============ -->
+  <section>
+    <div class="container">
+      <div class="section-eyebrow">O Desafio</div>
+      <h2 class="section-title">Crianças emocionalmente fortes <span class="accent">não surgem por acaso.</span></h2>
+      <p class="section-desc">Elas são formadas com orientação, amor e as ferramentas certas na infância.</p>
+
+      <div class="pains-grid">
+        <div class="pain-card">
+          <div class="pain-icon"><i data-lucide="shield-alert"></i></div>
+          <h3>Ansiedade & Insegurança</h3>
+          <p>A necessidade de aprovação e o medo de errar travam o potencial do seu filho. Ignorar essas dores não faz com que elas desapareçam.</p>
+        </div>
+
+        <div class="pain-card">
+          <div class="pain-icon"><i data-lucide="heart-off"></i></div>
+          <h3>Dificuldade nas Emoções</h3>
+          <p>Birras, momentos de raiva ou isolamento frequentes mostram que a criança ainda não aprendeu a entender e regular o que sente.</p>
+        </div>
+
+        <div class="pain-card">
+          <div class="pain-icon"><i data-lucide="sparkles"></i></div>
+          <h3>A Solução pela PNL</h3>
+          <p>Enquanto a criança se encanta com as fábulas, seu cérebro absorve novos padrões e crenças fortalecedoras para encarar o futuro com coragem.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BENEFÍCIOS ============ -->
+  <section class="benefits-section">
+    <div class="container">
+      <div class="section-eyebrow">A Jornada</div>
+      <h2 class="section-title">O que cada fábula <span class="accent">ensina ao seu filho?</span></h2>
+      <p class="section-desc">Um guia de desenvolvimento interior em formato de histórias fascinantes.</p>
+
+      <div class="benefits-grid">
+        <div class="benefit-item">
+          <div class="benefit-check"><i data-lucide="check"></i></div>
+          <div>
+            <h4>Lidar com medo e ansiedade</h4>
+            <p>Estratégias lúdicas para transformar medos em autoconfiança.</p>
+          </div>
+        </div>
+
+        <div class="benefit-item">
+          <div class="benefit-check"><i data-lucide="check"></i></div>
+          <div>
+            <h4>Confiar em si mesma</h4>
+            <p>Construção de uma mentalidade de capacidade e merecimento.</p>
+          </div>
+        </div>
+
+        <div class="benefit-item">
+          <div class="benefit-check"><i data-lucide="check"></i></div>
+          <div>
+            <h4>Desenvolver coragem nos desafios</h4>
+            <p>Aprender que errar faz parte do processo de aprendizado e vitória.</p>
+          </div>
+        </div>
+
+        <div class="benefit-item">
+          <div class="benefit-check"><i data-lucide="check"></i></div>
+          <div>
+            <h4>Fortalecer identidade e autoestima</h4>
+            <p>Enraizar quem ela é antes que a sociedade imponha rótulos.</p>
+          </div>
+        </div>
+
+        <div class="benefit-item">
+          <div class="benefit-check"><i data-lucide="check"></i></div>
+          <div>
+            <h4>Entender e regular emoções</h4>
+            <p>Ferramentas práticas para a criança reconhecer o que sente.</p>
+          </div>
+        </div>
+
+        <div class="benefit-item">
+          <div class="benefit-check"><i data-lucide="check"></i></div>
+          <div>
+            <h4>Crescer com segurança interior</h4>
+            <p>Bases sólidas para se tornar um adulto resiliente e brilhante.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AUTOR ============ -->
+  <section class="author-section">
+    <div class="container">
+      <div class="author-grid">
+        <div class="author-img-container">
+          <img src="autor.jpeg" alt="Autor Ricardo Augusto Borges da Silva"
+               onerror="this.style.display='none'; document.getElementById('author-fallback').style.display='flex';">
+
+          <div id="author-fallback" class="img-fallback"
+               style="display:none; height:280px; border-radius:18px; background: linear-gradient(180deg, var(--gold-pale), #e8d6a8); border: 2px dashed var(--gold); color: var(--text-dark);">
+            <i data-lucide="user" size="38" style="color: var(--gold-deep);"></i>
+            <p style="margin-top:10px; font-size:0.82rem; color: var(--text-muted);">Foto do Autor</p>
+            <span style="margin-top:10px; font-size:0.68rem; background: rgba(255,255,255,0.6); padding:5px 12px; border-radius:10px; color: var(--gold-deep); font-weight:600;">
+              Salve como "autor.jpeg"
+            </span>
+          </div>
+        </div>
+
+        <div>
+          <div class="author-eyebrow">Conheça o Autor</div>
+          <h2 class="author-name">Ricardo Augusto Borges da Silva</h2>
+          <p class="author-bio">
+            Especialista em desenvolvimento humano e aplicação de Programação Neurolinguística (PNL). Ricardo dedica sua jornada a criar conteúdos transformadores para que pais e educadores consigam moldar uma geração de crianças emocionalmente prontas para brilhar em qualquer cenário da vida.
+          </p>
+          <div class="author-badge-box">
+            <i data-lucide="award"></i>
+            <div>
+              <h4>Obra Recomendada</h4>
+              <p>Com prefácio especial assinado por <strong>Pablo Marçal</strong> e publicado pela <strong>Editora Reinante</strong>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OFERTA ============ -->
+  <section class="offer-section" id="oferta">
+    <div class="container">
+      <div class="offer-box">
+        <span class="offer-tag">Livro Físico · Edição Especial</span>
+
+        <h2 class="offer-title">Invista na Base Emocional do Seu Filho</h2>
+        <p class="offer-sub">Este não é apenas um livro infantil. É uma ferramenta de vida.</p>
+
+        <div class="price-tag">
+          <div class="price-old">De R$ 89,90</div>
+          <div class="price-current"><span>R$</span> 59,90</div>
+          <p class="price-installment">Ou em até 6x no cartão de crédito</p>
+        </div>
+
+        <button onclick="openCheckout()" class="btn-primary pulse-animation" style="width:100%; max-width:420px; margin-bottom:16px;">
+          <i data-lucide="shopping-bag" size="18"></i>
+          Comprar Meu Exemplar
+        </button>
+
+        <div class="trust-row">
+          <span><i data-lucide="shield-check"></i> Compra Segura</span>
+          <span><i data-lucide="truck"></i> Envio com Rastreio</span>
+          <span><i data-lucide="check-circle"></i> Garantia</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-eyebrow">Ainda com dúvidas?</div>
+      <h2 class="section-title">Perguntas <span class="accent">Frequentes</span></h2>
+      <p class="section-desc">Tudo o que você precisa saber sobre a entrega e o livro.</p>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Para qual faixa etária o livro é indicado?
+            <i data-lucide="chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            O livro é ideal para crianças de 4 a 12 anos. Para os menores, os pais podem ler juntos na hora de dormir. As crianças maiores conseguirão ler sozinhas e absorver as lições de PNL contidas nas fábulas.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Como funciona o envio e o frete?
+            <i data-lucide="chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            Enviamos para todo o Brasil via Correios (PAC ou SEDEX) ou transportadora. O valor do frete e o prazo de entrega são calculados automaticamente no checkout ao informar o seu CEP.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            O que é PNL e como ela é usada no livro infantil?
+            <i data-lucide="chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            A Programação Neurolinguística (PNL) utiliza metáforas e padrões de linguagem para reprogramar pensamentos. Através das histórias divertidas, o cérebro da criança aprende de forma natural a lidar com medo, insegurança e construir coragem.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Quais as formas de pagamento disponíveis?
+            <i data-lucide="chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            Aceitamos PIX (com aprovação imediata), cartão de crédito em até 6x e boleto bancário.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="container">
+      <p class="footer-title">O Livro das Crianças que Brilham</p>
+      <p>Todos os direitos reservados · <strong>Ricardo Augusto Borges da Silva</strong> · Editora Reinante</p>
+    </div>
+  </footer>
+
+  <!-- ============ MODAL ============ -->
+  <div class="modal-overlay" id="checkoutModal">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeCheckout()"><i data-lucide="x"></i></button>
+
+      <div style="text-align:center; margin-bottom:18px;">
+        <h3 style="font-size:1.2rem; font-family: var(--font-title); color: var(--text-dark);">Finalizar Pedido</h3>
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-top:5px;">Preencha seus dados para calcular o frete</p>
+      </div>
+
+      <form onsubmit="handleCheckoutSubmit(event)">
+        <div class="form-group">
+          <label>Nome Completo</label>
+          <input type="text" placeholder="Seu nome completo" required>
+        </div>
+
+        <div class="form-group">
+          <label>E-mail</label>
+          <input type="email" placeholder="seu@email.com" required>
+        </div>
+
+        <div class="form-group">
+          <label>CEP para Entrega</label>
+          <input type="text" id="cepInput" placeholder="00000-000" maxlength="9" required onblur="calcularFrete()">
+        </div>
+
+        <div id="freteResult" style="display:none; padding:12px; border-radius:10px; margin-bottom:14px; font-size:0.84rem;">
+          <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+            <span>Livro Físico:</span>
+            <strong>R$ 59,90</strong>
+          </div>
+          <div style="display:flex; justify-content:space-between; color:var(--gold-deep);">
+            <span>Envio (PAC/Sedex):</span>
+            <strong id="freteValor">R$ 14,90</strong>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary" style="width:100%; border-radius:12px; padding:14px; font-size:0.92rem;">
+          Ir para Pagamento
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ STICKY MOBILE ============ -->
+  <div class="sticky-bar" id="stickyBar">
+    <div>
+      <div class="sticky-label">Livro Físico</div>
+      <div class="sticky-price">R$ 59,90</div>
+    </div>
+    <button onclick="openCheckout()" class="btn-primary" style="padding:9px 20px; font-size:0.82rem; box-shadow: 0 4px 14px rgba(192,138,32,0.35);">
+      Comprar
+    </button>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    /* ===== ESTRELAS ANIMADAS NO HERO ===== */
+    (function() {
+      const canvas = document.getElementById('star-canvas');
+      const ctx = canvas.getContext('2d');
+      let stars = [];
+      let shooting = [];
+
+      function resize() {
+        const rect = canvas.parentElement.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+        initStars();
+      }
+
+      function initStars() {
+        stars = [];
+        const num = Math.floor((canvas.width * canvas.height) / 5500);
+        for (let i = 0; i < num; i++) {
+          stars.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height * 0.75,
+            r: Math.random() * 1.3 + 0.3,
+            alpha: Math.random() * 0.6 + 0.3,
+            speed: Math.random() * 0.008 + 0.003,
+            phase: Math.random() * Math.PI * 2
+          });
+        }
+      }
+
+      function spawnShootingStar() {
+        if (Math.random() < 0.008 && shooting.length < 2) {
+          shooting.push({
+            x: Math.random() * canvas.width * 0.7,
+            y: Math.random() * canvas.height * 0.35,
+            vx: 4 + Math.random() * 3,
+            vy: 2 + Math.random() * 1.5,
+            life: 1
+          });
+        }
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const t = Date.now() * 0.001;
+
+        stars.forEach(s => {
+          const twinkle = 0.55 + Math.sin(t * 2 + s.phase) * 0.45;
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 240, 200, ${s.alpha * twinkle})`;
+          ctx.fill();
+
+          if (s.r > 1.1) {
+            const g = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.r * 6);
+            g.addColorStop(0, `rgba(255, 230, 160, ${0.35 * twinkle})`);
+            g.addColorStop(1, 'rgba(255, 230, 160, 0)');
+            ctx.fillStyle = g;
+            ctx.beginPath();
+            ctx.arc(s.x, s.y, s.r * 6, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        });
+
+        spawnShootingStar();
+        for (let i = shooting.length - 1; i >= 0; i--) {
+          const sh = shooting[i];
+          const g = ctx.createLinearGradient(sh.x, sh.y, sh.x - sh.vx * 10, sh.y - sh.vy * 10);
+          g.addColorStop(0, `rgba(255, 240, 200, ${sh.life})`);
+          g.addColorStop(1, 'rgba(255, 240, 200, 0)');
+          ctx.strokeStyle = g;
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(sh.x, sh.y);
+          ctx.lineTo(sh.x - sh.vx * 8, sh.y - sh.vy * 8);
+          ctx.stroke();
+
+          sh.x += sh.vx;
+          sh.y += sh.vy;
+          sh.life -= 0.012;
+          if (sh.life <= 0 || sh.x > canvas.width || sh.y > canvas.height) {
+            shooting.splice(i, 1);
+          }
+        }
+
+        requestAnimationFrame(draw);
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+      draw();
+    })();
+
+    /* ===== FAQ ===== */
+    function toggleFaq(button) {
+      const item = button.parentElement;
+      const isActive = item.classList.contains('active');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+      if (!isActive) item.classList.add('active');
+    }
+
+    /* ===== MODAL ===== */
+    function openCheckout() { document.getElementById('checkoutModal').classList.add('active'); }
+    function closeCheckout() { document.getElementById('checkoutModal').classList.remove('active'); }
+
+    function calcularFrete() {
+      const cep = document.getElementById('cepInput').value;
+      if (cep.length >= 8) {
+        document.getElementById('freteResult').style.display = 'block';
+      }
+    }
+
+    function handleCheckoutSubmit(e) {
+      e.preventDefault();
+      alert("Redirecionando para o gateway de pagamento seguro...");
+    }
+
+    /* ===== STICKY BAR ===== */
+    window.addEventListener('scroll', () => {
+      const bar = document.getElementById('stickyBar');
+      if (window.scrollY > 500) bar.classList.add('visible');
+      else bar.classList.remove('visible');
+    });
+  </script>
+</body>
+</html>
